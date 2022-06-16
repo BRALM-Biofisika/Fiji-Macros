@@ -249,7 +249,7 @@ run("Stack Splitter", "number=num_tiles");
 close(title);
 
 Dialog.create("");
-text1="Select the folder to save the BasSiC corrected tiles";
+text1="Select the folder to save the BaSiC corrected tiles";
   Dialog.addMessage(text1);
   Dialog.show();
 
