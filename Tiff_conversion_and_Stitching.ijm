@@ -1,11 +1,5 @@
-//Macro for the automatization of the shading/vignetting correction and image stitching with FiJi.
+//Macro for the automatization of Tiff conversion of indidual Tiles and posterior stitching
 // Coded by the Basque Resource for Advanced Light Microscopy (BRALM).
-
-//Note1: The plugin BaSic should be installed in FiJi.
-
-//Note2: The tile images to process (in *.tif or *.ims format) should be stored in the same directory without other different images on it. 
-
-//Note3: Remember the adquisition parameters of your microscope (row by row, colum by colum, snake mode, ...) to proceed corrcetly with the Stitching.
 
 
 // ************ Start ************ //
@@ -20,19 +14,6 @@ run("Close All");
 dir0 = getDirectory("Choose the Directory of the images to process");
 File.openSequence(dir0);
 title = getTitle();
-
-//Correct the Shading/Vignetting with BaSic plugin//Correct the Shading/Vignetting with BaSic plugin
-
-//To only estimate Flat-field change option: shading_model=[Estimate flat-field only (ignore dark-field)]
-
-run("BaSiC ", "processing_stack=title flat-field=None dark-field=None shading_estimation=[Estimate shading profiles] shading_model=[Estimate both flat-field and dark-field] setting_regularisationparametes=Automatic temporal_drift=Ignore correction_options=[Compute shading and correct images] lambda_flat=0.50 lambda_dark=0.50");
-
-//Close the uncorected image and Global Shading
-//If only Flat-field is calculated, please comment the close("Dark-field:"+title) line
-
-close(title);
-close("Flat-field:"+title);
-close("Dark-field:"+title);
 
 //Define the Number of Channels, Z-Stacks and Tiles
 
@@ -82,4 +63,4 @@ run("Properties...", "channels=num_channels slices=num_Z frames=1");
 
 //Save the final stitched and corrected image
 
-saveAs("tiff", dir1 + "Stitched_Corrected");
+saveAs("tiff", dir1 + "Stitched");
