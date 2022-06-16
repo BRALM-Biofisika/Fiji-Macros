@@ -13,6 +13,8 @@
 
 // ************ Start ************ //
 
+//Read me
+
 text0=""
 text1="Macro for the automatization of the shading/vignetting correction and image stitching with Fiji/ImageJ.";
 text2="Written by the Basque Resource for Advanced Light Microscopy (BRALM) - www.bralm.cf";
@@ -21,7 +23,7 @@ text4="any other different images on it.";
 text5="The plugin BaSiC should be installed in Fiji via Help > Update > Manage Update Sites";
 text6="The macro will ask for the number of channels, number of Z-stacks and number of Tiles of you experiment and also";
 text7="for the number of tiles in the X and Y axis and the way the tiles were adquired (row by row, colum by colum, snake mode, ...)";
-text8="Be sure that you have all this information to preceed with the execution of this macro.";
+text8="Be sure that you have all this information to preceed with the execution of this macro";
   
   Dialog.create("");
   Dialog.addMessage(text1);
@@ -39,6 +41,19 @@ text8="Be sure that you have all this information to preceed with the execution 
   Dialog.addMessage(text8);
   Dialog.show();
 
+//Close All warning
+
+text0=""
+text1="All your opened images in Fiji will be closed before starting with this Macro";
+text2="and not saved modifications will be lost.";
+text3="Are you sure you want to continue?";
+
+Dialog.create("");
+  Dialog.addMessage(text1);
+  Dialog.addMessage(text2);
+  Dialog.addMessage(text0);
+  Dialog.addMessage(text3);
+  Dialog.show();
 
 //Close everything to start
 
