@@ -1,5 +1,5 @@
-// Macro to split an image sequence of tiles (with x channels & y z-stacks) imported with Fiji (using File --> Import --> Image Sequence)
-// first into separated tiles (including the x channels) and finally the sequence of tiles in the same tiff (with x channels) splitted in y z-stacks
+// Macro to split a sequence of tiles (with x channels & y z-stacks) imported with Fiji (using File --> Import --> Image Sequence)
+// first into separated tiles (with x channels) and finally the sequence of tiles in the same tiff (with x channels) splitted in y z-stacks
 
 run("Close All");
 
