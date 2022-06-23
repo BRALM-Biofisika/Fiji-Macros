@@ -1,3 +1,6 @@
+// Macro to split an image sequence of tiles (with x channels & y z-stacks) imported with Fiji (using File --> Import --> Image Sequence)
+// first into separated tiles (including the x channels) and finally the sequence of tiles in the same tiff (with x channels) splitted in y z-stacks
+
 run("Close All");
 
 run("Open...");
@@ -13,8 +16,9 @@ num_Z=getNumber("How many Z-Stacks?", 0);
 defaultname="num_tiles";
 num_tiles=getNumber("How many Tiles?", 0);
 
-//Directorio para guardar
-dir1 = getDirectory("Choose the Directory of the images to save");
+//Directory to save the separated tiles (with x channels)
+
+dir1 = getDirectory("Choose the Directory of the images to save the tiles");
 
 for (i=1;i<num_tiles*num_Z+1;i++) {
         selectWindow(title);
@@ -26,9 +30,9 @@ for (i=1;i<num_tiles*num_Z+1;i++) {
 
 run("Close All");
 
-//Directorio para guardar
+//Directory to save the sequence of tiles splitted in y z-stacks (with x channels)
 
-dir2 = getDirectory("Choose the Directory of the images to save");
+dir2 = getDirectory("Choose the Directory of the images to save the splitted z-stacks");
 
 for (i=1;i<num_Z+1;i++) {
         File.openSequence(dir1, " filter=z start="+i+" step=20");
