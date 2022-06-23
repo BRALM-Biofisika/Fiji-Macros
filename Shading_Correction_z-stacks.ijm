@@ -365,6 +365,33 @@ for (i=10;i<num_tiles+1;i++) {
 }
 }
 
+//Close everything
+
 run("Close All");
+
+//Run the Stitching plugin (The parameters should be introduced by hand in the plugin GUI)
+
+Dialog.create("");
+text0="";
+text1="For the Stitching, first select the way the tiles were adquired (row by row, colum by colum, snake mode, ...) and then, ";
+text2="fill out only the number of tiles by X and Y axis, the folder with the BaSiC corrected tiles and the name of your files";
+text3="that should be tile_{i}.tif (only one i inside the { } )";
+text4="The stitched image will be saved in the same directory named as 'Stitched_Corrected'";
+  Dialog.addMessage(text1);
+  Dialog.addMessage(text2);
+  Dialog.addMessage(text3);
+  Dialog.addMessage(text0);
+  Dialog.addMessage(text4);
+  Dialog.show();
+
+run("Grid/Collection stitching");
+
+//Convert the image to the Number of Channels indicated before
+
+run("Properties...", "channels=num_channels slices=num_Z frames=1");
+
+//Save the final stitched and corrected image
+
+saveAs("tiff", dir1 + "Stitched_Corrected");
 
 }
