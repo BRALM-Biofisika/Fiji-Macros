@@ -1,4 +1,4 @@
-// Macro to apply the BaSiC shading correction to a sequence of z-stacks (with 3 channels & x tiles) saved in the same directory.
+// Macro to apply the BaSiC shading correction to a sequence of z-stacks (with x channels & y tiles) saved in the same directory.
 
 //Define the Number of Channels, Z-Stacks and Tiles
 
