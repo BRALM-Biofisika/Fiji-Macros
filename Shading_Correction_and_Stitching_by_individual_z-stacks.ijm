@@ -53,8 +53,6 @@ Dialog.create("");
 
 run("Close All");
 
-//run("Open...");
-
 //Select the directory, open the image sequence and read the Title of the resulting image
 
 Dialog.create("");
@@ -72,6 +70,7 @@ defaultname="num_channels";
 num_channels=getNumber("How many Channels?", 0);
 
 //Break the macro if the number of channls is more than 4
+
 if (num_channels>4) {
 	getBoolean("The maximum number of channels is 4", "OK", "Quit");
 	 break ;
@@ -111,18 +110,15 @@ for (i=1;i<num_Z+1;i++) {
 
 run("Close All");
 
-dir2 = getDirectory("Choose the Directory of the images to open");
-
 //For 1 Channel
 
 if (num_channels == 1) {
 	
 for (i=1;i<num_Z+1;i++) {
-        File.openSequence(dir2, " filter=z start="+i+" step=num_Z");
+        File.openSequence(dir1, " start="+i+" step="+num_Z+"");
         title = getTitle();
 		run("Properties...", "channels=num_channels slices=num_tiles frames=1");
-		run("Make Composite", "display=Composite");
-//        run("Split Channels");	
+		run("Make Composite", "display=Composite");	
 
 //Correct the Shading/Vignetting with BaSic plugin
 
@@ -149,15 +145,14 @@ run("Concatenate...", "all_open title=BaSiC_Corrected_Tiles open");
 run("Properties...", "channels=num_channels slices=num_tiles frames=num_Z") ;
 run("Re-order Hyperstack ...", "channels=[Channels (c)] slices=[Frames (t)] frames=[Slices (z)]");
 
-//run("Save");
-
 }
+
 //For 2 Channels
 
 if (num_channels == 2) {
 
 for (i=1;i<num_Z+1;i++) {
-        File.openSequence(dir2, " filter=z start="+i+" step=num_Z");
+        File.openSequence(dir1, " start="+i+" step="+num_Z+"");
         title = getTitle();
 		run("Properties...", "channels=num_channels slices=num_tiles frames=1");
 		run("Make Composite", "display=Composite");
@@ -194,8 +189,6 @@ run("Concatenate...", "all_open title=BaSiC_Corrected_Tiles open");
 run("Properties...", "channels=num_channels slices=num_tiles frames=num_Z") ;
 run("Re-order Hyperstack ...", "channels=[Channels (c)] slices=[Frames (t)] frames=[Slices (z)]");
 
-//run("Save");
-
 }
 
 //For 3 Channels
@@ -203,7 +196,7 @@ run("Re-order Hyperstack ...", "channels=[Channels (c)] slices=[Frames (t)] fram
 if (num_channels == 3) {
 
 for (i=1;i<num_Z+1;i++) {
-        File.openSequence(dir2, " filter=z start="+i+" step=num_Z");
+        File.openSequence(dir1, " start="+i+" step="+num_Z+"");
         title = getTitle();
 		run("Properties...", "channels=num_channels slices=num_tiles frames=1");
 		run("Make Composite", "display=Composite");
@@ -249,8 +242,6 @@ run("Concatenate...", "all_open title=BaSiC_Corrected_Tiles open");
 run("Properties...", "channels=num_channels slices=num_tiles frames=num_Z") ;
 run("Re-order Hyperstack ...", "channels=[Channels (c)] slices=[Frames (t)] frames=[Slices (z)]");
 
-//run("Save");
-
 }
 
 //For 4 Channels
@@ -258,7 +249,7 @@ run("Re-order Hyperstack ...", "channels=[Channels (c)] slices=[Frames (t)] fram
 if (num_channels == 4) {
 
 for (i=1;i<num_Z+1;i++) {
-        File.openSequence(dir2, " filter=z start="+i+" step=num_Z");
+        File.openSequence(dir1, " start="+i+" step="+num_Z+"");
         title = getTitle();
 		run("Properties...", "channels=num_channels slices=num_tiles frames=1");
 		run("Make Composite", "display=Composite");
@@ -312,8 +303,6 @@ run("Make Composite", "display=Composite");
 run("Concatenate...", "all_open title=BaSiC_Corrected_Tiles open");
 run("Properties...", "channels=num_channels slices=num_tiles frames=num_Z") ;
 run("Re-order Hyperstack ...", "channels=[Channels (c)] slices=[Frames (t)] frames=[Slices (z)]");
-
-//run("Save");
 
 }
 
