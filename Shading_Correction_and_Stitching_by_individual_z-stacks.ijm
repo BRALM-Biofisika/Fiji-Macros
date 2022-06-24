@@ -1,9 +1,14 @@
-// Macro to apply the BaSiC shading correction to a sequence of z-stacks (with x channels & y tiles) saved in the same directory.
+//Macro for the automatization of the shading/vignetting correction and image stitching with FiJi.
+//Coded by the Basque Resource for Advanced Light Microscopy (BRALM).
 
-//Define the Number of Channels, Z-Stacks and Tiles
+//The Corroction is applied to separated channels and separated Z-stacks
 
-// Macro to split an image sequence of tiles (with x channels & y z-stacks) imported with Fiji (using File --> Import --> Image Sequence)
-// first into separated tiles (with x channels) and finally the sequence of tiles in the same tiff (with x channels) splitted in y z-stacks
+//Note1: The plugin BaSic should be installed in FiJi.
+
+//Note2: The individual tile images to process (in *.tif or *.ims format) should be stored in the same directory without other different images on it. 
+
+//Note3: Remember the adquisition parameters of your microscope (row by row, colum by colum, snake mode, ...) to proceed corrcetly with the Stitching.
+
 
 // ************ Start ************ //
 
