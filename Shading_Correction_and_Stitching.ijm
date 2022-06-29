@@ -379,7 +379,7 @@ Dialog.create("");
 dir1 = getDirectory("Choose the Directory to save the splitted z-stacks");
 
 for (i=1;i<num_Z+1;i++) {
-        File.openSequence(dir0, " filter=z start="+i+" step=20");
+        File.openSequence(dir0, " filter=z start="+i+" step="+num_Z+"");
         saveAs("tiff", dir1 + "z-stack_" + i);
         close();
         print(""+i+"/"+num_Z+"");
