@@ -392,20 +392,19 @@ run("Close All");
 if (num_channels == 1) {
 	
 for (i=1;i<num_Z+1;i++) {
-        File.openSequence(dir1, " start="+i+" step="+num_Z+"");
+//       File.openSequence(dir1, " start="+i+" step="+num_Z+"");
+		open(""+dir1+"/z-stack_"+i+".tif");
         title = getTitle();
-		run("Properties...", "channels=num_channels slices=num_tiles frames=1");
-		run("Make Composite", "display=Composite");	
 
 //Correct the Shading/Vignetting with BaSic plugin
 
 //To only estimate Flat-field change option: shading_model=[Estimate flat-field only (ignore dark-field)]
 
-run("BaSiC ", "processing_stack=title flat-field=None dark-field=None shading_estimation=[Estimate shading profiles] shading_model=[Estimate both flat-field and dark-field] setting_regularisationparametes=Automatic temporal_drift=Ignore correction_options=[Compute shading and correct images] lambda_flat=0.50 lambda_dark=0.50");
+run("BaSiC ", "processing_stack=z-stack_"+i+".tif flat-field=None dark-field=None shading_estimation=[Estimate shading profiles] shading_model=[Estimate both flat-field and dark-field] setting_regularisationparametes=Automatic temporal_drift=Ignore correction_options=[Compute shading and correct images] lambda_flat=0.50 lambda_dark=0.50");
 
 // Convert the image to Number of Channels, Z-Stacks and Tiles defined previously
 
-run("Properties...", "channels=num_channels slices=num_Z frames=num_tiles") ;
+run("Properties...", "channels=num_channels slices=1 frames=num_tiles") ;
 
 //Close the uncorected image and Global Shading
 //If only Flat-field is calculated, please comment the close("Dark-field:"+title) line
