@@ -139,7 +139,7 @@ close(titleC1);
 close("Flat-field:"+titleC1);
 close("Dark-field:"+titleC1);
 
-run("BaSiC ", "processing_stack=["+titleC2+"] flat-field=None dark-field=None shading_estimation=[Estimate shading profiles] shading_model=[Estimate both flat-field and dark-field)] setting_regularisationparametes=Automatic temporal_drift=Ignore correction_options=[Compute shading and correct images] lambda_flat=0.50 lambda_dark=0.50");
+run("BaSiC ", "processing_stack=["+titleC2+"] flat-field=None dark-field=None shading_estimation=[Estimate shading profiles] shading_model=[Estimate both flat-field and dark-field] setting_regularisationparametes=Automatic temporal_drift=Ignore correction_options=[Compute shading and correct images] lambda_flat=0.50 lambda_dark=0.50");
 run("Properties...", "channels=1 slices=num_Z frames=num_tiles") ;
 
 close(titleC2);
